@@ -1,0 +1,20 @@
+{
+  "name": "cyptonym",
+  "description": "Tool to generate HD crypto wallet addresses and check balance",
+  "main": "app.js",
+  "bin": {
+    "cryptonym": "./app.js"
+  },
+  "scripts": {
+    "start": "node app"
+  },
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hanzeljesheen/cryptonym.git"
+  },
+  "dependencies": {
+    "bip39": "^2.4.0",
+    "bitcoinjs-lib": "^3.3.1"
+  }
+}

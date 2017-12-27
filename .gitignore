@@ -1,0 +1,11 @@
+# os files
+.DS_Store
+
+# log file
+*.log
+
+# package directories
+node_modules
+
+# temp files
+temp/

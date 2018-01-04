@@ -2,25 +2,19 @@
 'use strict';
 
 const bip39     = require('bip39'),
-      bitcoin   = require('bitcoinjs-lib');
+      chalk     = require('chalk'),
+      inquirer  = require('inquirer');
 
-const mnemonic  = bip39.generateMnemonic(),
-      hex       = bip39.mnemonicToSeedHex(mnemonic),
-      seed      = bip39.mnemonicToSeed(mnemonic),
-      root      = bitcoin.HDNode.fromSeedBuffer(seed);
+const Prompt    = require('./utils/prompt');
 
-const derive    = path => {
-  const obj = root.derivePath(path);
+(async () => {
 
-  console.log(`\n${path}`);
-  console.log(`Address: ${obj.getAddress()}`);
-  console.log(`Public: ${obj.getPublicKeyBuffer().toString('hex')}`);
-  console.log(`Private: ${obj.keyPair.toWIF()}`);
-}
- 
-console.log(`mnemonic: ${mnemonic}`);
-console.log(`seed: ${hex}`);
-console.log(`xpub: ${root.neutered().toBase58()}`);
-console.log(`xprv: ${root.toBase58()}`);
+  const prompt   = new Prompt(inquirer),
+        mnemonic = await prompt.simple('Mnemonic Phrase');
 
-[0, 1, 2, 3, 4].forEach(item => derive(`m/44'/0'/0'/0/${item}`));
+  if (!bip39.validateMnemonic(mnemonic)) {
+    console.log(chalk.red.bold('✗ Invalid Mnemonic Phrase'));
+    process.exit(1);
+  }
+
+})();

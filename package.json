@@ -2,6 +2,9 @@
   "name": "cyptonym",
   "description": "Tool to generate HD crypto wallet addresses and check balance",
   "main": "app.js",
+  "engines": {
+    "node": ">=9.0.0"
+  },
   "bin": {
     "cryptonym": "./app.js"
   },
@@ -15,6 +18,8 @@
   },
   "dependencies": {
     "bip39": "^2.4.0",
-    "bitcoinjs-lib": "^3.3.1"
+    "bitcoinjs-lib": "^3.3.1",
+    "chalk": "^2.3.0",
+    "inquirer": "^4.0.2"
   }
 }

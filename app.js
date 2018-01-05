@@ -2,7 +2,9 @@
 'use strict';
 
 const bip39     = require('bip39'),
+      bitcoin   = require('bitcoinjs-lib'),
       chalk     = require('chalk'),
+      clear     = require('cli-clear'),
       inquirer  = require('inquirer');
 
 const Prompt    = require('./utils/prompt');
@@ -16,5 +18,15 @@ const Prompt    = require('./utils/prompt');
     console.log(chalk.red.bold('✗ Invalid Mnemonic Phrase'));
     process.exit(1);
   }
+
+  clear();
+  console.log(chalk.bold.blue('CRYPTONYM\n'));
+
+  const seed      = bip39.mnemonicToSeed(mnemonic),
+        root      = bitcoin.HDNode.fromSeedBuffer(seed),
+        coin      = await prompt.list('Select Coin', [ 'Ethereum' ]),
+        lib       = require(`./coins/${coin.toLowerCase()}`);
+
+  lib(root, prompt);
 
 })();

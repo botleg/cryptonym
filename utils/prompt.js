@@ -18,6 +18,20 @@ class Prompt {
 
   }
 
+  async list (message, items) {
+
+    const response = await this.inquirer.prompt([{
+      choices   : items,
+      message   : message,
+      name      : 'data',
+      type      : 'list'
+    }]);
+
+    return response.data;
+
+  }
+
+
 }
 
 module.exports = Prompt;

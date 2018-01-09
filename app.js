@@ -24,7 +24,7 @@ const Prompt    = require('./utils/prompt');
 
   const seed      = bip39.mnemonicToSeed(mnemonic),
         root      = bitcoin.HDNode.fromSeedBuffer(seed),
-        coin      = await prompt.list('Select Coin', [ 'Ether', 'Request Token', 'Streamr DATAcoin' ]),
+        coin      = await prompt.list('Select Coin', [ 'Ether', 'Request Token', 'SONM', 'Streamr DATAcoin' ]),
         lib       = require(`./coins/${coin.replace(/\s+/g, '-').toLowerCase()}`);
 
   lib(root, prompt);

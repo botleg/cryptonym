@@ -24,8 +24,8 @@ const Prompt    = require('./utils/prompt');
 
   const seed      = bip39.mnemonicToSeed(mnemonic),
         root      = bitcoin.HDNode.fromSeedBuffer(seed),
-        coin      = await prompt.list('Select Coin', [ 'Ethereum' ]),
-        lib       = require(`./coins/${coin.toLowerCase()}`);
+        coin      = await prompt.list('Select Coin', [ 'Ether', 'Request Token' ]),
+        lib       = require(`./coins/${coin.replace(/\s+/g, '-').toLowerCase()}`);
 
   lib(root, prompt);
 

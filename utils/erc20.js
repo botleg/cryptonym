@@ -7,7 +7,8 @@ class ERC20 {
 
   constructor (root, contract = null) {
 
-    const key       = root.derivePath('m/44\'/60\'/1\'/0/0'),
+    const account   = this.hash(contract),
+          key       = root.derivePath(`m/44'/60'/${account}'/0/0`),
           pvt       = key.keyPair.d.toBuffer(),
           buffer    = ethUtil.privateToAddress(pvt);
 
@@ -16,6 +17,22 @@ class ERC20 {
     this.pvt        = pvt;
 
     console.log(`Ethereum Address ${chalk.green(this.address)}\n`);
+
+  }
+
+  hash (str) {
+
+    let hash = 0;
+    if (!str) {
+      str = '0x0000000000000000000000000000000000000000';
+    }
+
+    for (let char of str) {
+      hash = ((hash << 5) - hash) + char.charCodeAt();
+      hash = hash & hash;
+    }
+
+    return hash;
 
   }
 

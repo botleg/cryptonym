@@ -27,6 +27,6 @@ const Prompt    = require('./utils/prompt');
         coin      = await prompt.list('Select Coin', [ 'Ether', 'Request Token', 'SONM', 'Streamr DATAcoin' ]),
         lib       = require(`./coins/${coin.replace(/\s+/g, '-').toLowerCase()}`);
 
-  lib(root, prompt);
+  await lib(root, prompt);
 
 })();

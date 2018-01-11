@@ -1,13 +1,15 @@
 'use strict';
-const chalk   = require('chalk'),
-      ethUtil = require('ethereumjs-util'),
-      open    = require('open');
+const bitcoin   = require('bitcoinjs-lib'),
+      chalk     = require('chalk'),
+      ethUtil   = require('ethereumjs-util'),
+      open      = require('open');
 
 class ERC20 {
 
-  constructor (root, contract = null) {
+  constructor (seed, contract = null) {
 
     const account   = this.hash(contract),
+          root      = bitcoin.HDNode.fromSeedBuffer(seed),
           key       = root.derivePath(`m/44'/60'/${account}'/0/0`),
           pvt       = key.keyPair.d.toBuffer(),
           buffer    = ethUtil.privateToAddress(pvt);

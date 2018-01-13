@@ -3,12 +3,13 @@
 Tool to generate HD crypto wallet addresses and check balance.
 
 ## Supported Coins
-1. [Ether](https://www.ethereum.org/)
-2. [Golem](https://golem.network/)
-3. [Request Token](https://request.network/)
-4. [SONM](https://sonm.io/)
-5. [Stellar Lumen](https://www.stellar.org/)
-6. [Streamr DATAcoin](https://www.streamr.com/)
+1. [Bitcoin](https://bitcoin.org/)
+2. [Ether](https://www.ethereum.org/)
+3. [Golem](https://golem.network/)
+4. [Request Token](https://request.network/)
+5. [SONM](https://sonm.io/)
+6. [Stellar Lumen](https://www.stellar.org/)
+7. [Streamr DATAcoin](https://www.streamr.com/)
 
 ## Run Instruction
 

@@ -23,7 +23,7 @@ const Prompt    = require('./utils/prompt');
   console.log(chalk.bold.blue('CRYPTONYM\n'));
 
   const seed      = bip39.mnemonicToSeed(mnemonic),
-        coin      = await prompt.list('Select Coin', [ 'Ether', 'Golem', 'Request Token', 'SONM', 'Stellar Lumen', 'Streamr DATAcoin' ]),
+        coin      = await prompt.list('Select Coin', [ 'Bitcoin', 'Ether', 'Golem', 'Request Token', 'SONM', 'Stellar Lumen', 'Streamr DATAcoin' ]),
         lib       = require(`./coins/${coin.replace(/\s+/g, '-').toLowerCase()}`);
 
   await lib(seed, prompt);

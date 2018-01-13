@@ -17,6 +17,7 @@
     "url": "git+ssh://git@github.com/hanzeljesheen/cryptonym.git"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "bip39": "^2.4.0",
     "bitcoinjs-lib": "^3.3.1",
     "chalk": "^2.3.0",

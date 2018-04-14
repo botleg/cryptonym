@@ -14,7 +14,7 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/hanzeljesheen/cryptonym.git"
+    "url": "git+ssh://git@github.com/botleg/cryptonym.git"
   },
   "dependencies": {
     "axios": "^0.17.1",

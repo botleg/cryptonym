@@ -1,64 +1,56 @@
-'use strict';
-const axios     = require('axios');
+'use strict'
+const axios = require('axios')
 
 class BCH {
-
   constructor (root) {
-    this.root   = root;
+    this.root = root
   }
 
   privates () {
-    return this.root.derivePath(`m/44'/145'/0'`).toBase58();
+    return this.root.derivePath(`m/44'/145'/0'`).toBase58()
   }
 
   async check (address) {
-
-    const res = await axios(`https://blockexplorer.com/api/addr/${address}`);
+    const res = await axios(`https://blockexplorer.com/api/addr/${address}`)
 
     return {
-      balance       : res.data['balance'],
-      transcations  : res.data['txApperances']
+      balance: res.data['balance'],
+      transcations: res.data['txApperances']
     }
-
   }
 
   async balance () {
-
-    let address = null,
-        balance = 0,
-        data    = null;
+    let address = null
+    let balance = 0
+    let data = null
 
     for (let item of [0, 1]) {
-      let index   = 0;
+      let index = 0
 
       do {
-        address = this.root.derivePath(`m/44'/145'/0'/${item}/${index}`).getAddress();
-        data    = await this.check(address);
-        balance += data.balance;
-        index++;
-      } while (data.transcations);
+        address = this.root.derivePath(`m/44'/145'/0'/${item}/${index}`).getAddress()
+        data = await this.check(address)
+        balance += data.balance
+        index++
+      } while (data.transcations)
     }
 
-    return balance;
-
+    return balance
   }
 
   async generate () {
-
-    let address = null,
-        data    = null,
-        index   = 0;
+    let address = null
+    let data = null
+    let index = 0
 
     do {
-      address = this.root.derivePath(`m/44'/145'/0'/0/${index}`).getAddress();
-      data    = await this.check(address);
-      index++;
-    } while (data.transcations);
+      address = this.root.derivePath(`m/44'/145'/0'/0/${index}`).getAddress()
+      data = await this.check(address)
+      index++
+    } while (data.transcations)
 
-    return address;
-
+    return address
   }
-
 }
 
-module.exports = BCH;
+module.exports = BCH

@@ -40,7 +40,7 @@ class LTC {
       } while (data.transcations)
     }
 
-    return [balance, transcations]
+    return [ balance, transcations ]
   }
 
   async generate () {

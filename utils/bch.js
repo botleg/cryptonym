@@ -22,6 +22,7 @@ class BCH {
   async balance () {
     let address = null
     let balance = 0
+    let transcations = 0
     let data = null
 
     for (let item of [0, 1]) {
@@ -30,12 +31,14 @@ class BCH {
       do {
         address = this.root.derivePath(`m/44'/145'/0'/${item}/${index}`).getAddress()
         data = await this.check(address)
+
         balance += data.balance
+        transcations += data.transcations
         index++
       } while (data.transcations)
     }
 
-    return balance
+    return [ balance, transcations ]
   }
 
   async generate () {

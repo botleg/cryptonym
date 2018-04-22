@@ -11,8 +11,11 @@ module.exports = async (seed, prompt) => {
   switch (option) {
     case 'View Balance':
       console.log('checking...')
-      const balance = await coin.balance()
-      console.log(`Balance ${chalk.green(balance + ' BCH')}`)
+      const res = await coin.balance()
+      const balance = res[0]
+
+      console.log(`Total Balance ${chalk.green(balance + ' BCH')}`)
+      console.log(`Number of Transcations ${chalk.green(res[1])}`)
       break
 
     case 'Generate New Address':

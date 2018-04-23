@@ -1,6 +1,8 @@
 # Cryptonym
 
-Tool to generate HD crypto wallet addresses and check balance.
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
+
+Offline command-line wallet that doesn't store anything on disc. All you need to have is a 12 word phrase (can be generated from the app) that lets you generate the public and private keys for your accounts. This supports HD wallets that lets you create a new address for every transaction (for bitcoin, bitcoin cash and litecoin). This will only lets you receive coins and check balance. To send coins, you need to export the private keys from this application and use it in dedicated wallets. To know more about the working, check [this](https://botleg.com/stories/local-cryptocurrency-wallet-that-doesnt-store-anything/) blog post.
 
 ## Supported Coins
 1. [Bitcoin](https://bitcoin.org/)
